@@ -1,0 +1,9 @@
+scripts:
+  script_1:
+    args:
+      arg1: arg_name1
+      arg2: arg_name2
+  script_2:
+    args:
+      arg1: arg_name1
+      arg2: arg_name2

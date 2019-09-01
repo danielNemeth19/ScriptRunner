@@ -1,0 +1,46 @@
+script_configs:
+  script_other:
+    args:
+    - name_for_server: param_for_script
+      name_to_show: param1
+      type: string
+    - name_for_server: param_for_script
+      name_to_show: param2
+      type: string
+    env_path:
+      linux: linux bin python path
+      nt: win bin python path
+    name: custom_script.py
+    type: python
+  script_other2:
+    args:
+    - name_for_server: param_for_script
+      name_to_show: param1
+      type: string
+    - name_for_server: param_for_script
+      name_to_show: param2
+      type: string
+    env_path:
+      linux: linux bin python path
+      nt: win bin python path
+    name: random_script.py
+    type: python
+  single_bond_process_launcher:
+    args:
+    - name_for_server: --RSHOST
+      name_to_show: Risk Server Host
+      type: string
+    - name_for_server: --RSPORT
+      name_to_show: Risk Server Port
+      type: string
+    - name_for_server: --as-of-date
+      name_to_show: As of date
+      type: date
+    - name_for_server: --ident
+      name_to_show: Bond ID
+      type: string
+    env_path:
+      linux: linux bin python path
+      nt: win bin python path
+    name: adm_set_mfi_get_analytics.py
+    type: python

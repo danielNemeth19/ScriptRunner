@@ -1,0 +1,31 @@
+{% extends 'ScriptRunner/index.html'%}
+
+
+{% block content %}
+
+<h3>Welcome to the process launcher page</h3>
+
+
+{% if  script_select_form %}
+<form action="{% url 'process_launcher:script_config' %}" method="get" >
+    {%csrf_token%}
+    {{ script_select_form }}
+     <input type="submit" value="Select">
+</form>
+{% endif %}
+
+
+{% if script_args_form %}
+<form action="{% url 'process_launcher:script_config' %}" method="post" >
+    {%csrf_token%}
+    <table border="1">
+    {{ script_args_form }}
+    </table>
+     <input type="submit" value="Select">
+</form>
+
+
+{% endif %}
+
+{% endblock %}
+
