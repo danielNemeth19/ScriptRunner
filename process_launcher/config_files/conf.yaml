@@ -1,5 +1,5 @@
 script_configs:
-  script_other:
+  script_other_1:
     args:
     - name_for_server: param_for_script
       name_to_show: param1
@@ -12,7 +12,7 @@ script_configs:
       nt: win bin python path
     name: custom_script.py
     type: python
-  script_other2:
+  script_other_2:
     args:
     - name_for_server: param_for_script
       name_to_show: param1
@@ -25,19 +25,19 @@ script_configs:
       nt: win bin python path
     name: random_script.py
     type: python
-  single_bond_process_launcher:
+  script_other_3:
     args:
     - name_for_server: --RSHOST
-      name_to_show: Risk Server Host
+      name_to_show: Hostname
       type: string
     - name_for_server: --RSPORT
-      name_to_show: Risk Server Port
+      name_to_show: Port
       type: string
     - name_for_server: --as-of-date
       name_to_show: As of date
       type: date
     - name_for_server: --ident
-      name_to_show: Bond ID
+      name_to_show: ID
       type: string
     env_path:
       linux: linux bin python path
