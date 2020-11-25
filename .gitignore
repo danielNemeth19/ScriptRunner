@@ -80,3 +80,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *,cover
+
+# Database specific
+*.sqlite3
