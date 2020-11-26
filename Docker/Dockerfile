@@ -13,11 +13,8 @@ RUN apk add --no-cache \
       supervisor
 
 WORKDIR /app
-COPY requirements.txt ./requirements.txt
-COPY process_launcher ./process_launcher/
-COPY ScriptRunner ./ScriptRunner
-COPY static ./static
-COPY manage.py ./manage.py
+COPY ./app/requirements.txt /app
+COPY ./app /app
 
 RUN pip install -r requirements.txt
 RUN python manage.py migrate
