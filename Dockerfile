@@ -9,23 +9,30 @@ RUN apk add --no-cache \
       linux-headers \
       musl-dev \
       make \
+      nginx \
       supervisor
 
-WORKDIR .
-COPY requirements.txt /app/requirements.txt
-COPY process_launcher /app/process_launcher/
-COPY ScriptRunner /app/ScriptRunner
-COPY static /app/static
-COPY manage.py /app/manage.py
+WORKDIR /app
+COPY requirements.txt ./requirements.txt
+COPY process_launcher ./process_launcher/
+COPY ScriptRunner ./ScriptRunner
+COPY static ./static
+COPY manage.py ./manage.py
 
-RUN pip install -r /app/requirements.txt
-RUN python /app/manage.py migrate
+RUN pip install -r requirements.txt
+RUN python manage.py migrate
+
+COPY nginx.conf /etc/nginx
+COPY uwsgi.ini /etc/uwsgi/
+COPY uwsgi_params ./uwsgi_params
+COPY supervisord.conf /etc/supervisord.conf
+
+
+RUN mkdir -p /run/nginx \
+      && ln -sf /dev/stdout /var/log/nginx/access.log \
+      && ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 3080
 
-WORKDIR /app
-#CMD ["gunicorn"  , "--bind", "0.0.0.0:8000", "app:app"]
-#CMD ["/usr/bin/supervisord", "-n"]
-#CMD exec gunicorn ScriptRunner.wsgi:application  --bind 0.0.0.0:3080 --workers 3 --access-logfile /app/access.log --error-logfile /app/error.log
-CMD ["gunicorn", "ScriptRunner.wsgi:application", "--bind", "0.0.0.0:3080", "--workers", "3", "--access-logfile", "/app/access.log", "--error-logfile", "/app/error.log"]
-
+#CMD ["gunicorn", "ScriptRunner.wsgi:application", "--bind", "0.0.0.0:3080", "--workers", "3", "--access-logfile", "/app/access.log", "--error-logfile", "/app/error.log"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
