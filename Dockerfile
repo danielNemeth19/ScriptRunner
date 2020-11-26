@@ -34,5 +34,4 @@ RUN mkdir -p /run/nginx \
 
 EXPOSE 3080
 
-#CMD ["gunicorn", "ScriptRunner.wsgi:application", "--bind", "0.0.0.0:3080", "--workers", "3", "--access-logfile", "/app/access.log", "--error-logfile", "/app/error.log"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
