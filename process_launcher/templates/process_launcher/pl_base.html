@@ -1,5 +1,5 @@
 {% extends 'ScriptRunner/index.html'%}
-
+{% load static %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
 <form action="{% url 'process_launcher:script_config' %}" method="get" >
     {%csrf_token%}
     {{ script_select_form }}
-     <input type="submit" value="Select">
+     <input type="submit" value="Select" class="select-btn">
 </form>
 {% endif %}
 
@@ -21,11 +21,14 @@
     <table border="1">
     {{ script_args_form }}
     </table>
-     <input type="submit" value="Select">
+     <input type="submit" value="Select" class="select-btn">
 </form>
-
-
 {% endif %}
 
 {% endblock %}
 
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'process_launcher/js/ps.js' %}" ></script>
+    <link rel="stylesheet" href="{% static '/process_launcher/css/pl_style.css' %}">
+{% endblock js%}

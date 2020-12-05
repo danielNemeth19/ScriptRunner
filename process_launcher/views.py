@@ -18,7 +18,6 @@ class HomeProcessLauncher(TemplateView):
 
 def script_request_handler(request):
     if request.method == "GET":
-        print(request)
         form = ScriptSelectFrom(request.GET)
         if form.is_valid():
             selected_script = form.cleaned_data['processes']

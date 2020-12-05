@@ -1,4 +1,4 @@
-FROM python:3.6-alpine3.9
+FROM python:3.8-alpine
 
 MAINTAINER Daniel Nemeth <daniel.nemeth83@yahoo.com>
 
@@ -18,6 +18,7 @@ COPY ./app /app
 
 RUN pip install -r requirements.txt
 RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
 
 COPY nginx.conf /etc/nginx
 COPY uwsgi.ini /etc/uwsgi/

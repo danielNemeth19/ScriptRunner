@@ -1,0 +1,19 @@
+.select-btn {
+    height: 32px;
+    width: 130px;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #002036;
+    border:none;
+    text-align: center;
+    transition: all 0.2s;
+    outline: 0;
+}
